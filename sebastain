@@ -1,0 +1,116 @@
+import turtle
+
+# Set up the screen
+screen = turtle.Screen()
+screen.bgcolor("lightblue")
+
+# Create the turtle object
+godzilla = turtle.Turtle()
+godzilla.shape("turtle")
+godzilla.speed(10)
+
+# Function to draw a circle with specific size
+def draw_circle(color, radius, x, y):
+    godzilla.penup()
+    godzilla.goto(x, y)
+    godzilla.pendown()
+    godzilla.begin_fill()
+    godzilla.fillcolor(color)
+    godzilla.circle(radius)
+    godzilla.end_fill()
+
+# Function to draw the body (simplified)
+def draw_body():
+    godzilla.penup()
+    godzilla.goto(0, -100)
+    godzilla.pendown()
+    godzilla.begin_fill()
+    godzilla.fillcolor("green")
+    godzilla.setheading(0)
+    godzilla.circle(100, 180)  # Semi-circle for the body
+    godzilla.end_fill()
+
+# Function to draw the head (simplified)
+def draw_head():
+    godzilla.penup()
+    godzilla.goto(0, 50)  # Position the head above the body
+    godzilla.pendown()
+    godzilla.begin_fill()
+    godzilla.fillcolor("green")
+    godzilla.circle(50)  # Head as a circle
+    godzilla.end_fill()
+
+# Function to draw the spikes (simplified)
+def draw_spikes():
+    spike_positions = [(-60, 100), (0, 120), (60, 100), (-100, 150), (100, 150)]
+    for pos in spike_positions:
+        godzilla.penup()
+        godzilla.goto(pos)
+        godzilla.pendown()
+        godzilla.begin_fill()
+        godzilla.fillcolor("gray")
+        godzilla.setheading(45)
+        for _ in range(3):
+            godzilla.forward(20)
+            godzilla.right(120)
+        godzilla.end_fill()
+
+# Function to draw the legs (simplified)
+def draw_legs():
+    # Front legs
+    draw_circle("green", 30, -40, -160)
+    draw_circle("green", 30, 40, -160)
+    
+    # Back legs
+    draw_circle("green", 40, -60, -220)
+    draw_circle("green", 40, 60, -220)
+
+# Function to draw the arms (simplified)
+def draw_arms():
+    # Front arms
+    godzilla.penup()
+    godzilla.goto(-70, 0)
+    godzilla.pendown()
+    godzilla.begin_fill()
+    godzilla.fillcolor("green")
+    godzilla.setheading(180)
+    godzilla.circle(30, 180)
+    godzilla.end_fill()
+
+    godzilla.penup()
+    godzilla.goto(70, 0)
+    godzilla.pendown()
+    godzilla.begin_fill()
+    godzilla.fillcolor("green")
+    godzilla.setheading(0)
+    godzilla.circle(30, 180)
+    godzilla.end_fill()
+
+# Function to draw the tail (simplified)
+def draw_tail():
+    godzilla.penup()
+    godzilla.goto(0, -150)
+    godzilla.pendown()
+    godzilla.setheading(-45)
+    godzilla.begin_fill()
+    godzilla.fillcolor("green")
+    godzilla.circle(80, 180)
+    godzilla.end_fill()
+
+# Putting it all together
+def draw_godzilla():
+    draw_body()
+    draw_head()
+    draw_spikes()
+    draw_legs()
+    draw_arms()
+    draw_tail()
+
+# Call the function to draw Godzilla
+draw_godzilla()
+
+# Hide the turtle and display the result
+godzilla.hideturtle()
+
+# Keep the window open until clicked
+screen.exitonclick()
